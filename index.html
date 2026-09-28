@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쿨핏 넥팬 상세페이지</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  /* 색은 이 5개만 사용 (파랑 + 흰색) */
+  :root {
+    --navy: #0B2A5B;
+    --blue: #1D5FE0;
+    --sky: #8DB8FF;
+    --ice: #EAF2FF;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--ice);
+    color: var(--navy);
+    font-family: "Pretendard", "Malgun Gothic", sans-serif;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+  .page { max-width: 860px; margin: 0 auto; background: var(--white); }
+  section { padding: 88px 48px; text-align: center; }
+  .label {
+    display: inline-block; font-size: 15px; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--blue); border: 2px solid var(--blue); border-radius: 999px;
+    padding: 6px 18px; margin-bottom: 20px;
+  }
+  h2 { font-size: 38px; font-weight: 800; line-height: 1.35; margin-bottom: 40px; }
+
+  /* ① 큰 제목 */
+  .hero { background: var(--navy); color: var(--white); padding: 120px 48px; }
+  .hero .product { font-size: 18px; font-weight: 600; color: var(--sky); margin-bottom: 20px; }
+  .hero h1 { font-size: 54px; font-weight: 800; line-height: 1.25; margin-bottom: 24px; }
+  .hero h1 em { font-style: normal; color: var(--sky); }
+  .hero p { font-size: 21px; color: var(--ice); }
+  .photo {
+    margin: 56px auto 0; max-width: 560px; aspect-ratio: 4 / 3; border-radius: 20px;
+    border: 2px dashed var(--sky); display: grid; place-items: center;
+    color: var(--sky); font-size: 17px;
+  }
+
+  /* ② 고객 고민 */
+  .worry { background: var(--ice); }
+  .worry ul { list-style: none; display: grid; gap: 16px; max-width: 620px; margin: 0 auto; }
+  .worry li {
+    background: var(--white); border-radius: 16px; padding: 24px 28px;
+    font-size: 20px; font-weight: 600; text-align: left;
+    display: flex; gap: 14px; align-items: center;
+  }
+  .worry li::before {
+    content: "?"; flex: none; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--sky); color: var(--navy); font-weight: 800;
+    display: grid; place-items: center;
+  }
+
+  /* ③ 해결책 */
+  .solution .items { display: grid; gap: 20px; max-width: 680px; margin: 0 auto; }
+  .solution .item {
+    border: 2px solid var(--ice); border-radius: 20px; padding: 32px;
+    text-align: left; display: flex; gap: 22px;
+  }
+  .solution .num {
+    flex: none; width: 52px; height: 52px; border-radius: 14px;
+    background: var(--blue); color: var(--white); font-size: 22px; font-weight: 800;
+    display: grid; place-items: center;
+  }
+  .solution h3 { font-size: 23px; font-weight: 800; margin-bottom: 6px; }
+  .solution p { font-size: 17px; }
+
+  /* ④ 가격 */
+  .price { background: var(--navy); color: var(--white); }
+  .price .label { color: var(--sky); border-color: var(--sky); }
+  .price-box {
+    background: var(--white); color: var(--navy); border-radius: 24px;
+    max-width: 520px; margin: 0 auto; padding: 44px 36px;
+  }
+  .price-box .name { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+  .price-box .original { font-size: 18px; color: var(--sky); text-decoration: line-through; }
+  .price-box .amount { font-size: 52px; font-weight: 800; color: var(--blue); line-height: 1.2; }
+  .price-box .amount small { font-size: 24px; }
+  .price-box ul { list-style: none; margin: 28px 0; border-top: 2px solid var(--ice); padding-top: 24px; }
+  .price-box li { font-size: 17px; padding: 6px 0; }
+  .price-box li::before { content: "✓ "; color: var(--blue); font-weight: 800; }
+  .cta {
+    display: block; background: var(--blue); color: var(--white); text-decoration: none;
+    font-size: 21px; font-weight: 800; border-radius: 14px; padding: 20px;
+  }
+  .closing { margin-top: 36px; font-size: 20px; color: var(--ice); }
+
+  @media (max-width: 600px) {
+    section, .hero { padding: 64px 16px; }
+    .hero h1 { font-size: 36px; }
+    .hero p { font-size: 18px; }
+    h2 { font-size: 28px; }
+    .worry li { font-size: 17px; padding: 20px; }
+    .solution .item { padding: 24px 20px; gap: 16px; }
+    .price-box { padding: 36px 20px; }
+    .price-box .amount { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <!-- ① 큰 제목 -->
+  <section class="hero">
+    <div class="product">쿨핏 넥팬 · 휴대용 목 선풍기</div>
+    <h1>출근길 땀,<br><em>이제 걱정 마세요</em></h1>
+    <p>목에 걸기만 하면 시원해지는 휴대용 넥팬입니다</p>
+    <div class="photo">제품 사진</div>
+  </section>
+
+  <!-- ② 고객 고민 -->
+  <section class="worry">
+    <span class="label">고민</span>
+    <h2>혹시 이런 고민<br>있으신가요?</h2>
+    <ul>
+      <li>출근길 지하철에서 땀이 줄줄 흘러요</li>
+      <li>손 선풍기는 계속 들고 있기 불편해요</li>
+      <li>배터리가 금방 닳아 오후엔 못 써요</li>
+      <li>소리가 커서 사무실에선 켜기 민망해요</li>
+    </ul>
+  </section>
+
+  <!-- ③ 해결책 -->
+  <section class="solution">
+    <span class="label">해결책</span>
+    <h2>쿨핏 넥팬이<br>해결해 드립니다</h2>
+    <div class="items">
+      <div class="item"><div class="num">1</div><div><h3>360° 바람 순환</h3><p>목 둘레 전체에 바람이 닿아 5분이면 땀이 식어요.</p></div></div>
+      <div class="item"><div class="num">2</div><div><h3>두 손이 자유로운 핸즈프리</h3><p>목에 걸기만 하시면 돼요. 손잡이를 들 필요가 없습니다.</p></div></div>
+      <div class="item"><div class="num">3</div><div><h3>한 번 충전으로 최대 12시간</h3><p>출근부터 퇴근까지 충전 걱정 없이 쓰실 수 있어요.</p></div></div>
+      <div class="item"><div class="num">4</div><div><h3>도서관보다 조용한 25dB</h3><p>저소음 모드로 사무실에서도 편하게 켜 두세요.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ④ 가격 -->
+  <section class="price">
+    <span class="label">가격</span>
+    <h2>지금 만나보세요</h2>
+    <div class="price-box">
+      <div class="name">쿨핏 넥팬 1개 + C타입 충전 케이블</div>
+      <div class="original">정가 39,000원</div>
+      <div class="amount">29,900<small>원</small></div>
+      <ul>
+        <li>전 상품 무료 배송</li>
+        <li>1년 무상 A/S 보장</li>
+        <li>화이트 · 스카이 · 네이비 중 선택</li>
+      </ul>
+      <a class="cta" href="#">지금 구매하기</a>
+    </div>
+    <p class="closing">올여름, 땀 대신 시원함을 챙기세요.</p>
+  </section>
+
+</main>
+</body>
+</html>
